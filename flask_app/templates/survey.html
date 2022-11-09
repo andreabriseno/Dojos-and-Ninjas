@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        .requestinfo{
+            margin-left: auto;
+            margin-right: auto;
+            width: 500px;
+            display: flex;
+            justify-content: space-evenly;
+            background-color: teal;
+            padding: 15px;
+        }
+        .info{
+            padding: 15px;
+            font-size: 18px;
+        }
+    </style>
+    <title>Dojo Survey</title>
+</head>
+<body>
+    <div class="requestinfo">
+        <div class="info">
+            <form action="/dojo/create" method="post">    {# url is going to match with controller dojos so it knows where to go #}
+                <h1>New Dojo</h1>
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" name="name">
+                </div>
+                <div class="info">
+                    <input class="btn" type='submit' value='Add Dojo'>
+                </div>
+            </form>
+        </div>
+        <div>
+            <h2> All Dojos</h2>
+            {% for places in places_dojos %}                           {# staments is grabbing info from model dojo and placing it in the template#}
+            <p>
+                <a href="/dojo/{{places.id}}">{{places.name}}</a>    {# url is going to pick up and transfer to /dojo/<int:id>#}
+            {% endfor %}
+            </p>
+        </div>
+    </div>
+    <a href="/ninja">Add Ninja</a> {# redirecting to /ninja onces is it being clicked on #}
+</body>
+</html>

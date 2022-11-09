@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        h1{
+            text-align: center;
+        }
+        table{
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid lightgray;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th{
+            background-color: grey;
+            padding: 10px;
+            border: 2px solid lightgray;
+            text-align: center;
+            width: auto;
+            height: auto;
+        }
+        td{
+            padding: 10px;
+            border: 2px solid lightgray;
+            text-align: center;
+            width: auto;
+            height: auto;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>{{dojo.name}} Ninjas</h1>     {# getting the data from class dojo #}
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ninjas in dojo.ninjas %}    {# accessing the list in models dojo#}
+                <tr>
+                    <td>{{ninjas.first_name}}</td> {# inputting the info from dojo.py #}
+                    <td>{{ninjas.last_name}}</td>
+                    <td>{{ninjas.age}}</td>
+                    <td>
+                        <a href="/dojo/edit/{{ninjas.id}}" >Edit </a> |
+                        <a href="/dojo/destroy/{{ninjas.id}}" > Delete </a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="/"> Home </a> {# link is redirecting to the first home page in dojos.py#}
+</body>
+</html>
